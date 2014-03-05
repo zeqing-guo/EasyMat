@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="static/css/style.css" type="css/text">
+<script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
+<title>EasyMat</title>
+</head>
+<body scroll="no">
+    <div class="container">
+    	<div class="terminal">
+    		<div id="monitor">&gt;&gt;&gt;&nbsp;Welcome to EasyMat!<br />&gt;&gt;&gt;&nbsp;</div>
+    		<div class="command">
+    			<span class="prompt">&gt;&gt;&gt;</span><input type="text" id="cmd" value="">  
+    		</div>
+    	</div>
+    	<div class="fn-image">
+    		<form action="">
+    			<fieldset>
+    				<legend>Enter file name and select image format.</legend>
+    				<input type="text" name="filename" id="filename" value="default">
+    				<select name="format" id="format">
+    					<option value="png">*.png</option>
+    					<option value="jpg">*.jpg</option>
+    					<option value="pdf">*.pdf</option>
+    					<option value="eps">*.eps</option>
+    					<option value="ps">*.ps</option>
+    				</select>
+    			</fieldset>
+    		</form>
+    		<div class="show-box"></div>
+    	</div>
+    </div>
+</body>
+</html>
