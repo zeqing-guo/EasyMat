@@ -12,6 +12,9 @@ import re
 # Create your views here.
 def query(request):
     return render_to_response("index.html")
+
+def help(request):
+    return render_to_response("help.html")
         
 def ajax(request):
     query = ""

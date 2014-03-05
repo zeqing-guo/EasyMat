@@ -54,8 +54,10 @@ function drawImage(commands, format) {
 
 	$.post('/ajax/', params, function(data){
 		if(format == "png" || format == "jpg"){
+			$('.show-box').empty()
 			$('.show-box').html('<img width="100%" height="100%" name="test" src="data:image/' + format + ';base64,' + data + '">');
 		} else {
+			$('.show-box').empty()
 			$('.show-box').html('<embed width=' + document.body.offsetWidth / 2 + 'px height=' + document.body.offsetHeight + 'px src="data:application/' + format + ';base64,' + data + '">');
 		}
 		console.log(data);

@@ -80,10 +80,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 HERE = os.path.dirname(__file__)
 
+MEDIA_ROOT = os.path.join(HERE, "../media").replace('\\', '/')
+print(MEDIA_ROOT)
+MEDIA_URL = "/media/"
+
 STATIC_ROOT = os.path.join(HERE, "../static").replace('\\', '/')
+print(STATIC_ROOT)
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( os.path.join(HERE, "../pylab1/static/").replace('\\', '/'), )
+STATICFILES_DIRS = (os.path.join(HERE, "../pylab1/static/").replace('\\', '/'), )
 
 TEMPLATE_DIRS = (
     os.path.join(HERE, 'templates').replace('\\','/'),  

@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-from pylab1.views import query, ajax
+from pylab1.views import query, ajax, help
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,8 +13,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^admin/', include(admin.site.urls)),
-    url(r"^index/$", query),
     url(r"^$", query),
     url(r"^ajax/$", ajax),
+    url(r"^help$", help)
 )
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

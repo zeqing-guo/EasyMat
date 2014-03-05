@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="static/css/style.css" type="css/text">
 <script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="static/js/common.js"></script>
-<title>EasyMat</title>
+<title>EasyMat - home</title>
 </head>
 <body scroll="no">
+    {% include 'header.html' %}
     <div class="container">
     	<div class="terminal">
     		<div id="monitor">&gt;&gt;&gt;&nbsp;Welcome to EasyMat!<br />&gt;&gt;&gt;&nbsp;</div>
@@ -21,11 +22,16 @@
     				<legend>Enter file name and select image format.</legend>
     				<input type="text" name="filename" id="filename" value="default">
     				<select name="format" id="format">
-    					<option value="png">*.png</option>
     					<option value="jpg">*.jpg</option>
+    					<option value="png">*.png</option>
     					<option value="pdf">*.pdf</option>
+    					<!--
     					<option value="eps">*.eps</option>
+    					<option value="svg">*.svg</option>
+    					<option value="tif">*.tif</option>
+    					<option value="tiff">*.tiff</option>
     					<option value="ps">*.ps</option>
+    					-->
     				</select>
     			</fieldset>
     		</form>
