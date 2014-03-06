@@ -23,8 +23,9 @@ $(function() {
 						filename = 'default';
 						$('#filename').val('default');
 					}
-					commands.push('savefig(' + 'imgData,' + ' format="' + format + '")');
-					drawImage(commands, format);
+					//commands.push('savefig(' + 'imgData,' + ' format="' + format + '")');
+					drawImage(commands, format, filename);
+					commands.splice(0);
 				} else if (value == 'clear') {
 					cmd.val('');
 					monitor.text('>>> Welcome to EasyMat!');
@@ -46,20 +47,23 @@ $(function() {
 	});
 });
 
-function drawImage(commands, format) {
+function drawImage(commands, format, filename) {
 	var params = {
 		query: commands.join("&%&"),// &%& is delimiter
-		mimeType: format
+		mimeType: format,
+		fileName: filename
 	};
 
 	$.post('/ajax/', params, function(data){
-		if(format == "png" || format == "jpg"){
+		
+		if(data.format == "png" || data.format == "jpg"){
 			$('.show-box').empty()
-			$('.show-box').html('<img width="100%" height="100%" name="test" src="data:image/' + format + ';base64,' + data + '">');
+			$('.show-box').html('<img width="100%" height="100%" src=' + data.url + '>');
 		} else {
 			$('.show-box').empty()
-			$('.show-box').html('<embed width=' + document.body.offsetWidth / 2 + 'px height=' + document.body.offsetHeight + 'px src="data:application/' + format + ';base64,' + data + '">');
+			$('.show-box').html('<embed width=' + document.body.offsetWidth / 2 + 'px height=' + document.body.offsetHeight + 'px src=' + data.url + '>');
 		}
+		
 		console.log(data);
 	});
 }
