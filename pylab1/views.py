@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from numpy import abs, cos, sin, linspace, arange, pi, exp, random
-from matplotlib.pylab import figure, plot, xlabel, ylabel, title, xlim, ylim, legend, show, savefig, subplot, hist, text, axis, grid, gcf
+from numpy import *
+from matplotlib.pylab import *
+from mpl_toolkits.mplot3d import Axes3D
 from util import mimeTypeDict
 
 import cStringIO
@@ -18,10 +19,11 @@ def help(request):
     return render_to_response("help.html")
         
 def ajax(request):
+    returnInfo = {}
     try:
         query = ""
         mimeType = ""
-        savePath = ""
+	imgData = cStringIO.StringIO()
     
         # Test and get npQuery and pltQuery from request
         if (not request.method == "POST") or not ("query" in request.POST or "mimeType" in request.POST or "fileName" in request.POST):
@@ -42,17 +44,17 @@ def ajax(request):
             exec(queryItem)
         
         # Save the image
-        savePath = "media/save/%s.%s" % (fileName, mimeType)
-        savefig(savePath)
-        
+        savefig(imgData, format = mimeType)
         # Clear the streamIO of matplotlib.pylib
         gcf().clear()
     
-        # Response
-        payload = {"url": savePath, "format": mimeType}
+	# Responsejjj
+	response = HttpResponse(mimetype = mimeTypeDict(mimeType))
+	response['Content-Disposition'] = 'attachment; filename=test.%s' % mimeType
+	response.write(imgData.getvalue().encode("base64").strip())
+	return response
     except Exception,data:
-        print Exception,":",data
-    return HttpResponse(json.dumps(payload), mimetype="application/json")
+        return HttpResponse([True, data])
 
 def checkScurity(query):
     semicolon = '%'
