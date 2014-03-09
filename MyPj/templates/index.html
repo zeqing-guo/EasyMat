@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link rel="shortcut icon" href="/static/img/favicon.ico">
+<link rel="Bookmark" href="/static/img/favicon.ico">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" src="/static/js/common.js"></script>
+<title>EasyMat - home</title>
+</head>
+<body scroll="no">
+    {% include 'header.html' %}
+    <div class="container">
+    	<div class="terminal">
+    		<div id="monitor">&gt;&gt;&gt;&nbsp;Welcome to EasyMat!<br />&gt;&gt;&gt;&nbsp;</div>
+    		<div class="command">
+    			<span class="prompt" id="prompt">&gt;&gt;&gt;</span><input type="text" id="cmd" value="">
+                <form id="file-form" action="/ajax_file/" method="POST">
+                    <input type="file" name="file" id="file" value="" class="hidden" />
+                    <input type="hidden" id="mimeType" name="mimeType" value="png">
+                    <input type="submit" id="upload" value="upload" class="hidden">
+                </form>
+    		</div>
+    	</div>
+    	<div class="fn-image">
+    		<form action="">
+    			<fieldset>
+    				<legend>Select image format.</legend>
+    				<select name="format" id="format">
+    					<option value="png">*.png</option>
+    					<option value="pdf">*.pdf</option>
+    					<!--
+    					<option value="eps">*.eps</option>
+    					<option value="jpg">*.jpg</option>
+    					<option value="svg">*.svg</option>
+    					<option value="tif">*.tif</option>
+    					<option value="tiff">*.tiff</option>
+    					<option value="ps">*.ps</option>
+    					-->
+    				</select>
+    			</fieldset>
+    		</form>
+    		<div class="show-box"></div>
+    	</div>
+    </div>
+</body>
+</html>

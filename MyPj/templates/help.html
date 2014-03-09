@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>EasyMat - help</title>
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<link rel="shortcut icon" href="/static/img/favicon.ico">
+<link rel="Bookmark" href="/static/img/favicon.ico">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="page">
+    	<h2>EasyMat使用帮助</h2>
+    	<p class="paragraph">EasyMat为一款类Matlab的绘图应用，主程序采用类命令行的窗口，可以生成png、pdf等多种格式的函数图像，可以满足绝大部分的函数绘图需求，从而为用户提供了极大的便利。</p>
+    	<p class="paragraph">用户可以在左侧的输入区域逐行输入绘图命令并回车，然后在右侧输入想要得到的文件名并选择文件类型，然后输入回车，即可生成函数图像。用户可以在右侧可以选择需要输出的文件类型，默认为png格式。下面是主页面命令行的输入示例：</p>
+    	<p class="code">
+    		<span>&gt;&gt;&gt;&nbsp;Welcome to EasyMat!</span><br />
+    		<span>&gt;&gt;&gt;&nbsp;hello world</span><br />
+    		<span>&gt;&gt;&gt;&nbsp;hello world</span><br />
+    		<span>&gt;&gt;&gt;&nbsp;hello world</span><br />
+    		<span>&gt;&gt;&gt;&nbsp;</span>
+    	</p>
+    	<p class="paragraph">然后输入draw命令即可进行绘图。若输入clear命令，则清除之前的所有命令，重新开始输入。可生成如下函数图像：</p>
+    <p class="code">
+    <span>&gt;&gt;&gt;&nbsp;t1 = arange(0.0, 0.5, 0.1)</span><br />
+    <span>&gt;&gt;&gt;&nbsp;t2 = arange(0.0, 0.5, 0.02)</span><br />
+    <span>&gt;&gt;&gt;&nbsp;figure(1)</span><br />
+    <span>&gt;&gt;&gt;&nbsp;subplot(211)</span><br />
+    <span>&gt;&gt;&gt;&nbsp;plot(t1, exp(-t1) * cos(2 * pi * t1, 'bo', t2, exp(-t2) * cos(2 * pi * t2), 'k'))</span><br />
+    <span>&gt;&gt;&gt;&nbsp;subplot(212)</span><br />
+    <span>&gt;&gt;&gt;&nbsp;plot(t2, cos(2 * pi * t2), 'r--')</span><br />
+    </p>
+	<figure>
+    	<img src="/static/img/example-1.png" alt="image" class="function-img" />
+		<figcaption>例一：函数图像绘制</figcaption>
+	</figure>
+    <p class="code">
+    <span>&gt;&gt;&gt;&nbsp;mu, sigma = 100, 15</span><br>
+    <span>&gt;&gt;&gt;&nbsp;x = mu + sigma * random.randn(10000)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;# the histogram of the data</span><br>
+    <span>&gt;&gt;&gt;&nbsp;n, bins, patches = hist(x, 50, normed=1, facecolor='g', alpha=0.75)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;xlabel('Smarts')</span><br>
+    <span>&gt;&gt;&gt;&nbsp;ylabel('Probability')</span><br>
+    <span>&gt;&gt;&gt;&nbsp;title('Histogram of IQ')</span><br>
+    <span>&gt;&gt;&gt;&nbsp;text(60, .025, r'$\mu=100,\ \sigma=15$')</span><br>
+    <span>&gt;&gt;&gt;&nbsp;axis([40, 160, 0, 0.03])</span><br>
+    <span>&gt;&gt;&gt;&nbsp;grid(True)</span><br>
+    </p>
+	<figure>	
+    	<img src="/static/img/example-2.png" alt="image" class="function-img" />
+		<figcaption>例二：统计图像绘制</figcaption>
+	</figure>
+    <p class="code">
+    <span>&gt;&gt;&gt;&nbsp;fig = figure</span><br>
+    <span>&gt;&gt;&gt;&nbsp;ax = Axes3D(fig)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;X = arange(-4, 4, 0.25)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;Y = arange(-4, 4, 0.25)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;X, Y = meshgrid(X, Y)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;R = sqrt(X**2 + Y**2)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;sin(R)</span><br>
+    <span>&gt;&gt;&gt;&nbsp;ax.plot_surface(X, Y, Z, retride = 1, cstride = 1, cmap = 'hot')</span><br>
+    </p>
+	<figure>
+    	<img src="/static/img/example-3.png" alt="image" class="function-img" />
+		<figcaption>例三：3D图像绘制</figcaption>
+	</figure>
+    <p class="paragraph">
+    EasyMat语法与MATLAB相似但for循环需按下面示例方式书写：
+    </p>
+    <p class="code">
+    <span>&gt;&gt;&gt;&nbsp;for 条件:</span><br>
+    <span>&gt;&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;执行语句</span><br>
+    <span>注意：执行语句前需要四格空格或者一个缩进。
+    </p>
+
+    </p>
+    </div>
+</body>
+</html>
