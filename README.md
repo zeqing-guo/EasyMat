@@ -1,4 +1,4 @@
 EsayMat
 =======
 
-Software Engineering lab1 create by Zeqing Guo and Yaning Sun.
+Software Engineering lab1 created by Zeqing Guo and Yaning Sun.
